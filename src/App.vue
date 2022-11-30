@@ -1,4 +1,5 @@
 <script>
+import axios from "axios";
 import { store } from "./store.js";
 
 import AppHeader from "./components/AppHeader.vue";
@@ -14,12 +15,33 @@ export default {
       store,
     };
   },
+  methods: {
+    searchMovie(data = "") {
+      if (data === "reset") {
+        this.store.searchText = "";
+      }
+      axios
+        .get("https://api.themoviedb.org/3/search/movie", {
+          params: {
+            api_key: "8fcf7b9bc08c090a4dda3f181c9cc521",
+            query: this.store.searchText,
+            language: "it-IT",
+          },
+        })
+        .then((resp) => {
+          this.store.movies = resp.data.results;
+        })
+        .catch((err) => {
+          this.store.movies = [];
+        });
+    },
+  },
 };
 </script>
 
 <template>
   <div>
-    <AppHeader />
+    <AppHeader @search="searchMovie" />
     <AppMain />
   </div>
 </template>
