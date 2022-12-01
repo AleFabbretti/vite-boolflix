@@ -1,7 +1,11 @@
 <script>
+import CountryFlag from "vue-country-flag-next";
 export default {
   props: {
     info: Object,
+  },
+  components: {
+    CountryFlag,
   },
 };
 </script>
@@ -17,6 +21,7 @@ export default {
       <h6>Titolo originale: {{ info.original_title }}</h6>
       <h6>Lingua originale: {{ info.original_language }}</h6>
       <h6>Voto: {{ info.vote_average }}</h6>
+      <country-flag country="fr" size="small" />
     </div>
   </li>
 </template>

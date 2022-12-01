@@ -28,4 +28,16 @@ export default {
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container {
+  background-color: black;
+  max-width: max-content;
+  & ul {
+    list-style: none;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+</style>
