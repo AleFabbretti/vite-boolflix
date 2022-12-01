@@ -1,7 +1,18 @@
 <script>
+import CountryFlag from "vue-country-flag-next";
 export default {
   props: {
     info: Object,
+  },
+  components: {
+    CountryFlag,
+  },
+  methods: {
+    getFlag(lang) {
+      if (lang == "en") {
+        return "gb";
+      }
+    },
   },
 };
 </script>
@@ -16,7 +27,13 @@ export default {
       />
       <h4>Titolo: {{ info.name }}</h4>
       <h6>Titolo originale: {{ info.original_name }}</h6>
-      <h6>Lingua originale: {{ info.original_language }}</h6>
+      <h6>
+        Lingua originale:
+        <country-flag
+          :country="getFlag(info.original_language)"
+          size="medium"
+        />
+      </h6>
       <h6>Voto: {{ info.vote_average }}</h6>
     </div>
   </li>
