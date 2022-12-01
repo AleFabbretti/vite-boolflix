@@ -10,7 +10,7 @@ export default {
   <li>
     <div class="my-card m-2">
       <img
-        :src="'https://image.tmdb.org/t/p/w342${info.poster_path}'"
+        :src="`https://image.tmdb.org/t/p/w342${info.poster_path}`"
         :alt="info.title"
       />
       <h4>Titolo: {{ info.title }}</h4>
