@@ -12,6 +12,12 @@ export default {
       if (lang == "en") {
         return "gb";
       }
+      return lang;
+    },
+  },
+  computed: {
+    vote() {
+      return Math.ceil(this.info.vote_average / 2);
     },
   },
 };
@@ -24,6 +30,7 @@ export default {
         :src="`https://image.tmdb.org/t/p/w342${info.poster_path}`"
         :alt="info.title"
       />
+
       <h4>Titolo: {{ info.title }}</h4>
       <h6>Titolo originale: {{ info.original_title }}</h6>
       <h6>
@@ -33,7 +40,11 @@ export default {
           size="medium"
         />
       </h6>
-      <h6>Voto: {{ info.vote_average }}</h6>
+      <h6 v-if="vote >= 1">
+        <font-awesome-icon v-for="n in vote" icon="fa-solid fa-star" />
+        <font-awesome-icon v-for="n in 5 - vote" icon="fa-regular fa-star" />
+        Voto: {{ vote }}
+      </h6>
     </div>
   </li>
 </template>

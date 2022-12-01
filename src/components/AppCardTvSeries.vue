@@ -14,6 +14,11 @@ export default {
       }
     },
   },
+  computed: {
+    vote() {
+      return Math.ceil(this.info.vote_average / 2);
+    },
+  },
 };
 </script>
 
@@ -34,7 +39,11 @@ export default {
           size="medium"
         />
       </h6>
-      <h6>Voto: {{ info.vote_average }}</h6>
+      <h6 v-if="vote >= 1">
+        <font-awesome-icon v-for="n in vote" icon="fa-solid fa-star" />
+        <font-awesome-icon v-for="n in 5 - vote" icon="fa-regular fa-star" />
+        Voto: {{ vote }}
+      </h6>
     </div>
   </li>
 </template>
