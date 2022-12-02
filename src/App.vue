@@ -59,12 +59,17 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="body">
     <AppHeader @search="searchMovie" />
     <AppMain />
   </div>
 </template>
 
 <style lang="scss">
+.body {
+  background-image: url(./assets/IT-it-20221128-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+  height: 100vh;
+}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import "./style/global.scss";
 </style>

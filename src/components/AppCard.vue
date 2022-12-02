@@ -31,8 +31,8 @@ export default {
         :alt="info.title"
       />
 
-      <h4>Titolo: {{ info.title }}</h4>
-      <h6>Titolo originale: {{ info.original_title }}</h6>
+      <h4>Titolo: {{ info.title || info.name }}</h4>
+      <h6>Titolo originale: {{ info.original_title || info.original_name }}</h6>
       <h6>
         Lingua originale:
         <country-flag
@@ -41,9 +41,17 @@ export default {
         />
       </h6>
       <h6 v-if="vote >= 1">
-        <font-awesome-icon v-for="n in vote" icon="fa-solid fa-star" />
-        <font-awesome-icon v-for="n in 5 - vote" icon="fa-regular fa-star" />
         Voto: {{ vote }}
+        <font-awesome-icon
+          class="color"
+          v-for="n in vote"
+          icon="fa-solid fa-star"
+        />
+        <font-awesome-icon
+          class="color"
+          v-for="n in 5 - vote"
+          icon="fa-regular fa-star"
+        />
       </h6>
     </div>
   </li>
@@ -52,7 +60,14 @@ export default {
 <style lang="scss" scoped>
 .my-card {
   width: 342px;
-  height: 700px;
-  border: 1px solid white;
+  & img {
+    height: 450px;
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+  }
+}
+.color {
+  color: #e50914;
 }
 </style>
