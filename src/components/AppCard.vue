@@ -30,7 +30,7 @@ export default {
         :src="`https://image.tmdb.org/t/p/w342${info.poster_path}`"
         :alt="info.title"
       />
-
+      <div></div>
       <h4>Titolo: {{ info.title || info.name }}</h4>
       <h6>Titolo originale: {{ info.original_title || info.original_name }}</h6>
       <h6>

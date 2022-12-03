@@ -19,6 +19,12 @@ export default {
       return Math.ceil(this.info.vote_average / 2);
     },
   },
+  data() {
+    return {
+      placeholder:
+        "http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png",
+    };
+  },
 };
 </script>
 
@@ -27,7 +33,11 @@ export default {
     <div class="my-card m-2">
       <img
         class="poster"
-        :src="`https://image.tmdb.org/t/p/w342${info.poster_path}`"
+        :src="`${
+          info.poster_path
+            ? `https://image.tmdb.org/t/p/w342${info.poster_path}`
+            : placeholder
+        }`"
         :alt="info.name"
       />
       <div class="info py-4 px-3">
@@ -58,10 +68,8 @@ export default {
 
 <style lang="scss" scoped>
 .my-card {
-  width: 342px;
   position: relative;
   & img {
-    height: 450px;
     object-fit: cover;
     object-position: top;
     width: 100%;
@@ -85,6 +93,6 @@ export default {
 }
 .my-card:hover .info {
   cursor: pointer;
-  opacity: 1;
+  opacity: 0.8;
 }
 </style>

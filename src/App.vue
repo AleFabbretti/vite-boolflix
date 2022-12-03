@@ -26,6 +26,7 @@ export default {
             api_key: "8fcf7b9bc08c090a4dda3f181c9cc521",
             query: this.store.searchText,
             language: "it-IT",
+            include_adult: false,
           },
         })
         .then((resp) => {
@@ -33,7 +34,6 @@ export default {
         })
         .catch((err) => {
           this.store.movies = [];
-          this.store.series = [];
         });
       if (data === "reset") {
         this.store.searchText = "";
@@ -44,13 +44,13 @@ export default {
             api_key: "25f24fd3ebdb2b8fa4786f77d8241b8d",
             query: this.store.searchText,
             language: "it-IT",
+            include_adult: false,
           },
         })
         .then((resp) => {
           this.store.series = resp.data.results;
         })
         .catch((err) => {
-          this.store.movies = [];
           this.store.series = [];
         });
     },
@@ -68,7 +68,8 @@ export default {
 <style lang="scss">
 .body {
   background-image: url(./assets/IT-it-20221128-popsignuptwoweeks-perspective_alpha_website_large.jpg);
-  height: 100vh;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 @import "./style/global.scss";

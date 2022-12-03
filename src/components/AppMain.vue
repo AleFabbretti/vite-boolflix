@@ -16,13 +16,15 @@ export default {
 </script>
 
 <template>
-  <section class="container">
-    <ul>
-      <AppCard v-for="movie in store.movies" :info="movie" />
+  <section>
+    <h3 v-if="store.movies.length > 0">MOVIES</h3>
+    <ul class="container">
+      <AppCardTvSeries v-for="movie in store.movies" :info="movie" />
     </ul>
   </section>
   <section class="container series">
-    <ul>
+    <h3 v-if="store.series.length > 0">SERIES</h3>
+    <ul class="container">
       <AppCardTvSeries v-for="serie in store.series" :info="serie" />
     </ul>
   </section>
@@ -30,14 +32,19 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background-color: black;
   max-width: max-content;
-  & ul {
-    list-style: none;
-    color: white;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  list-style: none;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+section {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+h3 {
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 </style>
